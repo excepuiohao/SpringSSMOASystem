@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ContractDAO">
+	<insert id="InsertContract" parameterType="com.bean.Contract">
+		insert into Contract
+		values
+		(#{ContractID},#{ContractContent},#{ContractType},#{UserId},#{ContractBeginTime},#{ContractEndTime})
+	</insert>
+	
+	<delete id="DeleteContract" parameterType="String">
+		DELETE from Contract
+		WHERE contractId=#{contractId}
+	</delete>
+
+	<select id="SelectContractByType" parameterType="String"
+		resultType="com.bean.Contract">
+		select * from Contract where type = #{type}
+	</select>
+
+	<select id="SelectContractByUserId" parameterType="String"
+		resultType="com.bean.Contract">
+		select * from Contract where UserId = #{UserId}
+	</select>
+</mapper>

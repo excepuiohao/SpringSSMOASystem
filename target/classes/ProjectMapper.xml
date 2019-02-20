@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ProjectDAO">
+	<insert id="InsertProject" parameterType="com.bean.Project">
+		insert into Project
+		values
+		(#{ProjectId},#{ProjectName},#{ProjectContent},#{ProjectTime},#{ProjectMoney},#{ProjectPMId})
+	</insert>
+	<update id="UpdateProject" parameterType="com.bean.Project">
+		update Project set
+		ProjectName=#{ProjectName},
+		ProjectContent=#{ProjectContent},
+		ProjectTime=#{ProjectTime},
+		ProjectMoney=#{ProjectMoney},
+		ProjectPMId=#{ProjectPMId}
+		where ProjectId=#{ProjectId}
+	</update>
+	<delete id="DeleteProject" parameterType="String">
+		DELETE from Project
+		WHERE projectId=#{projectId}
+	</delete>
+
+	<select id="SelectProjectByProjectPMId" parameterType="String"
+		resultType="com.bean.Project">
+		select * from Project where projectPMId = #{projectPMId}
+	</select>
+
+	<select id="SelectProjectByProjectId" parameterType="String"
+		resultType="com.bean.Project">
+		select * from Project where ProjectId = #{ProjectId}
+	</select>
+	
+	<select id="SelectAllProject" 
+		resultType="com.bean.Project">
+		select * from Project
+	</select>
+</mapper>

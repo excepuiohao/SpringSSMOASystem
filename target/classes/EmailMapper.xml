@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.EmailDAO">
+	<insert id="InsertEmail" parameterType="com.bean.Email">
+		insert into Email
+		values
+		(#{UserId},#{EmailPassword})
+	</insert>
+	<update id="UpdateEmail" parameterType="com.bean.Email">
+		update Email set
+		UserId=#{UserId},
+		EmailPassword=#{EmailPassword}
+	</update>
+	<delete id="DeleteEmail" parameterType="String">
+		DELETE from Email
+		WHERE emailId=#{emailId}
+	</delete>
+
+	<select id="SelectEmailById" parameterType="String"
+		resultType="com.bean.Email">
+		select * from Email where EmailId = #{EmailId}
+	</select>
+</mapper>

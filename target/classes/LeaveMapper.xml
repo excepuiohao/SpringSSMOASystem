@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.LeaveDAO">
+	<insert id="InsertLeave" parameterType="com.bean.Leave">
+		insert into Leave
+		values
+		(#{LeaveId},#{LeaveUserId},#{LeaveBeginTime},#{LeaveEndTime},#{LeaveType},#{LeaveReason},#{LeaveStatus})
+	</insert>
+	<update id="UpdateLeave" parameterType="com.bean.Leave">
+		update Leave set
+		LeaveUserId=#{LeaveUserId},
+		LeaveTime=#{LeaveTime},
+		LeaveType=#{LeaveType},
+		LeaveReason=#{LeaveReason},
+		LeaveStatus=#{LeaveStatus}
+		where LeaveId=#{LeaveId}
+	</update>
+	<delete id="DeleteLeave" parameterType="String">
+		DELETE from Leave
+		WHERE LeaveId=#{leaveId}
+	</delete>
+
+	<select id="SelectLeaveByStatus" parameterType="String"
+		resultType="com.bean.Leave">
+		select * from Leave where LEAVESTATUS = #{status}
+	</select>
+
+	<select id="SelectLeaveByUserId" parameterType="String"
+		resultType="com.bean.Leave">
+		select * from Leave where LEAVEUSERID = #{userId}
+	</select>
+	
+	<update id="AdjustingLeave">
+	update Leave set Leave.LEAVESTATUS= #{1} WHERE Leave.LeaveId=#{0}
+	</update>
+</mapper>

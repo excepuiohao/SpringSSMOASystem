@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ProjectUserDAO">
+	<insert id="InsertProjectUser" parameterType="com.bean.ProjectUser">
+		insert into
+		ProjectUser
+		values
+		(#{ProjectUserId},#{ProjectId},#{UserId},#{ProjectProcess})
+	</insert>
+	<update id="UpdateProjectUser" parameterType="com.bean.ProjectUser">
+		update ProjectUser
+		set
+		ProjectProcess=#{ProjectProcess}
+		where ProjectId=#{ProjectId} AND
+		UserId=#{UserId}
+	</update>
+	<delete id="DeleteProjectUser">
+		DELETE from ProjectUser
+		WHERE ProjectId=#{0} And
+		UserId=#{1}
+	</delete>
+
+	<select id="SelectUserIDByProjectId" parameterType="String"
+		resultType="String">
+		select ProjectUser.UserId from ProjectUser where ProjectId
+		= #{ProjectId}
+	</select>
+
+	<select id="SelectProjectIDByUserId" parameterType="String"
+		resultType="String">
+		select ProjectUser.ProjectId from ProjectUser where UserId
+		= #{UserId}
+	</select>
+
+	<select id="SelectUserProjectProcessByUserId" parameterType="String"
+		resultType="com.util.UserProjectProcess">
+		select Project.Projectname,
+		Project.Projectcontent,
+		Project.Projecttime,
+		Project.Projectmoney,
+		Project.Projectpmid,
+		ProjectUser.Projectprocess
+		from Project, ProjectUser
+		where Project.Projectid = ProjectUser.Projectid
+		and projectuser.userid = #{0}
+	</select>
+
+</mapper>

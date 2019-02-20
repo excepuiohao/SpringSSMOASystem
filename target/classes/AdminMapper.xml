@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.AdminDAO">
+	<insert id="InsertAdmin" parameterType="com.bean.Admin">
+		insert into Admin
+		values
+		(#{AdminPassword},#{AdminName})
+	</insert>
+	<update id="UpdateAdmin" parameterType="com.bean.Admin">
+		update Admin set
+		AdminPassword=#{AdminPassword},
+		AdminName=#{AdminName}
+		where
+		AdminId=#{AdminId}
+	</update>
+	<delete id="DeleteAdmin" parameterType="String">
+		DELETE from Admin
+		WHERE
+		AdminId=#{adminId}
+	</delete>
+
+	<select id="SelectAdminById" parameterType="String" resultType="com.bean.Admin">
+		select * from Admin where adminId = #{AdminId}
+	</select>
+
+	<select id="SelectAdminByIdAndPassword"  resultType="com.bean.Admin">
+		select * from Admin where AdminId = #{0} and AdminPassword=#{1}
+	</select>
+</mapper>

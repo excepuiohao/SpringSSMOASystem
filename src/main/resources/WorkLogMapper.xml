@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.WorkLogDAO">
+	<insert id="InsertWorkLog" parameterType="com.bean.WorkLog">
+		insert into WorkLog
+		values
+		(#{LogId},#{UserID},#{LogTime},#{LogContent},#{LogStatus})
+	</insert>
+	<update id="UpdateWorkLog" parameterType="com.bean.WorkLog">
+		update WorkLog set
+		UserID=#{UserID},
+		LogTime=#{LogTime},
+		LogContent=#{LogContent},
+		LogStatus=#{LogStatus}
+		where LogId=#{LogId}
+	</update>
+	<delete id="DeleteWorkLog" parameterType="String">
+		DELETE from WorkLog
+		WHERE logId=#{logId}
+	</delete>
+
+	<select id="SelectWorkLogByUserId" parameterType="String"
+		resultType="com.bean.WorkLog">
+		select * from WorkLog where userId = #{userId}
+	</select>
+
+	
+</mapper>

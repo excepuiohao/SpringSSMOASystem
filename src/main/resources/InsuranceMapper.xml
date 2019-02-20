@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.InsuranceDAO">
+	<insert id="InsertInsurance" parameterType="com.bean.Insurance">
+		insert into Insurance
+		values
+		(#{InsuranceID},#{UserId},#{CompensateMoney},#{CompensateReason},#{CompensateStatus})
+	</insert>
+	<update id="UpdateInsurance" parameterType="com.bean.Insurance">
+		update Insurance set
+		UserId=#{UserId},
+		CompensateMoney=#{CompensateMoney},
+		CompensateReason=#{CompensateReason},
+		CompensateStatus=#{CompensateStatus}
+		where InsuranceID=#{InsuranceID}
+	</update>
+	<delete id="DeleteInsurance" parameterType="String">
+		DELETE from Insurance
+		WHERE insuranceId=#{insuranceId}
+	</delete>
+
+	<select id="SelectInsuranceByUserId" parameterType="String"
+		resultType="com.bean.Insurance">
+		select * from Insurance where userId = #{userId}
+	</select>
+
+	<select id="SelectInsuranceByStatus" parameterType="String"
+		resultType="com.bean.Insurance">
+		select * from Insurance where CompensateStatus = #{CompensateStatus}
+	</select>
+	
+	<select id="SelectUsefulInsuranceByUserId" parameterType="String"
+		resultType="com.bean.Insurance">
+		select * from Insurance where userId = #{userId} and COMPENSATESTATUS='审核成功'
+	</select>
+</mapper>

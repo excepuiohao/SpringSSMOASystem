@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<settings>
+		<!-- 设置是否启用缓存，是否打印log。是否启用主键自增长 -->
+		<setting name="cacheEnabled" value="true" />
+		<setting name="logImpl" value="STDOUT_LOGGING" />
+	</settings>
+	
+	<mappers>
+		<mapper resource="AdjustMapper.xml" />
+		<mapper resource="AdminMapper.xml" />
+		<mapper resource="ApartmentMapper.xml" />
+		<mapper resource="AttendanceMapper.xml" />
+		<mapper resource="CardRecordMapper.xml" />
+		<mapper resource="CarMapper.xml" />
+		<mapper resource="CompensateMapper.xml" />
+		<mapper resource="ContractMapper.xml" />
+		<mapper resource="EmailMapper.xml" />
+		<mapper resource="EmailPasswordMapper.xml" />
+		<mapper resource="FinanceMapper.xml" />
+		<mapper resource="FiveRisksOneGoldMapper.xml" />
+		<mapper resource="InsuranceMapper.xml" />
+		<mapper resource="LeaveMapper.xml" />
+		<mapper resource="MapMapper.xml" />
+		<mapper resource="NoticeMapper.xml" />
+		<mapper resource="ProjectMapper.xml" />
+		<mapper resource="ProjectUserMapper.xml" />
+		<mapper resource="SalaryMapper.xml" />
+		<mapper resource="UsersMapper.xml" />
+		<mapper resource="WorkLogMapper.xml" />
+		<mapper resource="ApartmentMapper.xml" />
+		<mapper resource="ApartmentUserMapper.xml" />
+		
+	</mappers>
+
+</configuration>

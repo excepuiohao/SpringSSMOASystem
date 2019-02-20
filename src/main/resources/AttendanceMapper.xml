@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.AttendanceDAO">
+	<insert id="InsertAttendance" parameterType="com.bean.Attendance">
+		insert into Attendance
+		values
+		(#{UserID},#{AttendanceStatus},#{RecordId})
+	</insert>
+	<update id="UpdateAttendance" parameterType="com.bean.Attendance">
+		update Attendance set
+		UserID=#{UserID},
+		AttendanceStatus=#{AttendanceStatus},
+		RecordId=#{RecordId}
+		where AttendanceId=#{AttendanceId}
+	</update>
+	<delete id="DeleteAttendance" parameterType="String">
+		DELETE from Attendance
+		WHERE AttendanceId=#{AttendanceId}
+	</delete>
+
+	<select id="SelectAttendanceByStatus" parameterType="String"
+		resultType="com.bean.Attendance">
+		select * from Attendance where status = #{status}
+	</select>
+
+	<select id="SelectAttendanceById" parameterType="String"
+		resultType="com.bean.Attendance">
+		select * from AdjustSalary where AttendanceId = #{AttendanceId}
+	</select>
+</mapper>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.SalaryDAO">
+	<insert id="InsertSalary" parameterType="com.bean.Salary">
+		insert into Salary
+		values
+		(#{SalaryId},#{UserID},#{UserBaseSalary},#{UserAttence},#{UserCompensate},#{UserSubsidy},#{FiveRiskOneGold},#{UserGetSalary},#{GrantTime},#{SalaryMonth})
+	</insert>
+	<update id="UpdateSalary" parameterType="com.bean.Salary">
+		update Salary set
+		UserID=#{UserID},
+		UserBaseSalary=#{UserBaseSalary},
+		UserAttence=#{UserAttence},
+		UserCompensate=#{UserCompensate},
+		UserSubsidy=#{UserSubsidy},
+		FiveRiskOneGold=#{FiveRiskOneGold},
+		UserGetSalary=#{UserGetSalary},
+		GrantTime=#{GrantTime},
+		SalaryMonth=#{SalaryMonth}
+		where SalaryId=#{SalaryId}
+	</update>
+	<delete id="DeleteSalary" parameterType="String">
+		DELETE from Salary
+		WHERE
+		SalaryId=#{SalaryId}
+	</delete>
+
+	<select id="SelectSalaryByUserId" parameterType="String"
+		resultType="com.bean.Salary">
+		select * from Salary where userId = #{userId}
+	</select>
+
+	<select id="SelectSalaryByMonth" parameterType="String"
+		resultType="com.bean.Salary">
+		select * from Salary where SalaryMonth = #{month}
+	</select>
+
+	<select id="CalWorkHour" resultType="int">
+		select -
+		ceil((To_date(#{0} , 'yyyy-mm-dd hh24-mi-ss') -
+		To_date(#{1} , 'yyyy-mm-dd hh24-mi-ss')) * 24) -1
+		FROM DUAL
+	</select>
+</mapper>

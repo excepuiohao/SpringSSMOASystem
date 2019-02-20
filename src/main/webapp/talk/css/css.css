@@ -1,0 +1,120 @@
+/*清除浮动*/
+.clearfix:befor, .clear:after{
+    content: "";
+    display: table;
+}
+.clearfix: after{
+    clear: both;
+}
+.clearfix{
+    *zoom: 1;
+}
+.window,.qqshow,.anniu,.fasong,.ifo{
+    border-radius: 4px;
+    float: left;
+    margin: 3px;
+}
+.window,.qqshow{
+    border: solid 1px #ccc;
+}
+#main{
+    font-family: 幼圆;
+    margin: 100px auto;
+    width: 550px;
+    height: 516px;
+    background-color: #fff;
+    border-radius: 4px;
+    border: solid 1px #ccc;
+    background-color: #5a9cff;
+    padding: 3px;
+}
+#close{
+    outline: 0;
+}
+.ifo{
+    width: 98%;
+    height: 50px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+.ifo img{
+    height: 100%;
+    border-radius: 4px;
+}
+.ifo span{
+}
+.window{
+    width: 370px;
+    height: 320px;
+    background-color: #fff;
+    overflow: auto;
+    SCROLLBAR-FACE-COLOR: #eee ;
+    SCROLLBAR-HIGHLIGHT-COLOR: #FFF ;
+    SCROLLBAR-SHADOW-COLOR: #fff;
+    SCROLLBAR-3DLIGHT-COLOR:  #fff;
+    SCROLLBAR-ARROW-COLOR: black ;
+    SCROLLBAR-TRACK-COLOR:  #fff;
+    SCROLLBAR-DARKSHADOW-COLOR:  #fff;
+    SCROLLBAR-BASE-COLOR: #CCC;
+}
+.window .window-lis{
+    margin-left: 130px;
+    color: #3c3c3c;
+    font-size: 14px;
+}
+.window,textarea{
+    background-color: rgb(244, 244, 244);
+}
+.qqshow{
+    width: 160px;
+    height: 320px;
+    overflow: hidden;
+}
+.qqshow img{
+    height: 100%;
+    margin-left: -23px;
+}
+.fasong textarea{
+    width: 370px;
+    height: 115px;
+    resize: none;
+    border-radius: 4px;
+}
+.anniu button{
+    margin: 80px 4px 0 4px;
+    padding: 5px 15px;
+    
+}
+.xiaoxi1,.xiaoxi2{
+    max-width: 220px;
+    margin: 8px 8px;
+    border: solid 1px #ccc;
+    border-radius: 5px;
+    padding: 3px 3px;
+}
+.xiaoxi1{
+    float: left;
+}
+.xiaoxi1 .xiaoxi-tou{
+    float: left;
+}
+.xiaoxi1 .xiaoxi-ifo{
+    float: right;
+}.xiaoxi2 .xiaoxi-tou{
+     float: right;
+ }.xiaoxi2 .xiaoxi-ifo{
+      float: left;
+  }
+.xiaoxi2{
+    float: right;
+}
+.xiaoxi-tou{
+    height: 100%;
+    width: 30px;
+    display: inline-block;
+}
+.xiaoxi-ifo{
+    display: inline-block;
+    height: 100%;
+    max-width: 220px;
+}

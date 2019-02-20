@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.CarDAO">
+	<insert id="InsertCar" parameterType="com.bean.Car">
+		insert into Car
+		values
+		(#{CarId},#{CarLine},#{DriverId},#{CarNumber},#{CarModel},#{CarTime})
+	</insert>
+	<update id="UpdateCar" parameterType="com.bean.Car">
+		update Car set
+		CarLine=#{CarLine},
+		DriverId=#{DriverId},
+		CarNumber=#{CarNumber},
+		CarModel=#{CarModel},
+		CarTime=#{CarTime}
+		where CarId=#{CarId}
+	</update>
+	<delete id="DeleteCar" parameterType="String">
+		DELETE from Car
+		WHERE carId=#{carId}
+	</delete>
+
+	<select id="SelectCar"
+		resultType="com.bean.Car">
+		select * from Car 
+	</select>
+
+	<select id="SelectCarById" parameterType="String"
+		resultType="com.bean.Car">
+		select * from Car where carId = #{carId}
+	</select>
+</mapper>

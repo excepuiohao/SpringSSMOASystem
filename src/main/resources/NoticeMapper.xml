@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.NoticeDAO">
+	<insert id="InsertNotice" parameterType="com.bean.Notice">
+		insert into Notice
+		values
+		(#{NoticeId},#{NoticeContent},#{NoticePower},#{NoticeOrder},#{NoticeTime})
+	</insert>
+	<update id="UpdateNotice" parameterType="com.bean.Notice">
+		update Notice set
+		NoticeContent=#{NoticeContent},
+		NoticePower=#{NoticePower},
+		NoticeOrder=#{NoticeOrder},
+		NoticeTime=#{NoticeTime}
+		where
+		NoticeId=#{NoticeId}
+	</update>
+	<delete id="DeleteNotice" parameterType="String">
+		DELETE from Notice
+		WHERE
+		noticeId=#{noticeId}
+	</delete>
+
+	<select id="SelectNoticeByPower" parameterType="float"
+		resultType="com.bean.Notice">
+		select * from Notice where Notice.NoticePower &lt; #{power}
+		ORDER BY Notice.NoticeOrder ASC
+	</select>
+
+	<select id="GetNoticeCount" resultType="int">
+		select count(*) from
+		Notice
+	</select>
+	<update id="UpNotice1" parameterType="float">
+		update Notice SET
+		Notice.Noticeorder = (Notice.Noticeorder+1) where
+		Notice.Noticeorder
+		&lt; #{NoticeOrder}
+	</update>
+	<update id="UpNotice2" parameterType="String">
+		update Notice SET
+		Notice.Noticeorder = 1 where Notice.NoticeId=#{NoticeId}
+	</update>
+</mapper>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.UserDAO">
+	<insert id="InsertUser" parameterType="com.bean.Users">
+		insert into Users
+		values
+		(#{UserId},#{UserName},#{UserSex},#{UserPhone},#{UserAddress},#{UserApartment},#{UserEmailId},#{EmailPassword},#{UserSalary},#{UserPMID},#{UserLevel},#{UserTime},#{CarId})
+	</insert>
+	<update id="UpdateUser" parameterType="com.bean.Users">
+		update Users set
+		UserName=#{UserName},
+		UserSex=#{UserSex},
+		UserPhone=#{UserPhone},
+		UserAddress=#{UserAddress},
+		UserApartment=#{UserApartment},
+		UserEmailId=#{UserEmailId},
+		EmailPassword=#{EmailPassword},
+		UserSalary=#{UserSalary},
+		UserPMID=#{UserPMID},
+		UserLevel=#{UserLevel},
+		UserTime=#{UserTime},
+		CarId=#{CarId}
+		where UserId=#{UserId}
+	</update>
+	<delete id="DeleteUser" parameterType="String">
+		DELETE from Users
+		WHERE userId=#{userId}
+	</delete>
+
+	<select id="SelectUserByUserID" parameterType="String"
+		resultType="com.bean.Users">
+		select * from Users where userId = #{userId}
+	</select>
+	
+	<select id="SelectUserByIdAndPassword" parameterType="com.bean.Users"
+		resultType="com.bean.Users">
+		select * from Users where UserId=#{UserId} And EmailPassword=#{EmailPassword}
+	</select>
+
+   <select id="SelectUserLevelByUserID" parameterType="String"
+		resultType="int">
+		select Users.UserLevel from Users where UserId=#{UserId} 
+	</select>
+
+    <select id="SelectAllUserId" resultType="String">
+		select Users.UserId from Users
+	</select>
+</mapper>

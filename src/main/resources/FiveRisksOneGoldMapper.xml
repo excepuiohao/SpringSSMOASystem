@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.FiveRisksDAO">
+	<insert id="InsertFiveRisksOneGold" parameterType="com.bean.FiveRisksOneGold">
+		insert into
+		FiveRisksOneGold
+		values
+		(#{FiveRisksOneGoldId},#{UserId},#{Endowment},#{Medical},#{Unemployment},#{Employment},#{Maternity},#{Housing},#{PayTime})
+	</insert>
+	<update id="UpdateFiveRisksOneGold" parameterType="com.bean.FiveRisksOneGold">
+		update
+		FiveRisksOneGold set
+		UserId=#{UserId},
+		Endowment=#{Endowment},
+		Medical=#{Medical},
+		Unemployment=#{Unemployment},
+		Employment=#{Employment},
+		Maternity=#{Maternity},
+		Housing=#{Housing},
+		PayTime=#{PayTime}
+		where fiveRisksOneGold=#{fiveRisksOneGold}
+	</update>
+	<delete id="DeleteFiveRisksOneGold" parameterType="String">
+		DELETE from
+		FiveRisksOneGold
+		WHERE fiveRisksOneGoldId=#{fiveRisksOneGoldId}
+	</delete>
+
+	<select id="SelectFiveRisksOneGoldByUserId" parameterType="String"
+		resultType="com.bean.FiveRisksOneGold">
+		select * from FiveRisksOneGold where userId = #{userId}
+	</select>
+
+</mapper>

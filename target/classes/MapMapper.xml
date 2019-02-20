@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.MapDAO">
+	<insert id="InsertMap" parameterType="com.bean.Map">
+		insert into Map
+		values
+		(#{MapId},#{MapExplain},#{Address})
+	</insert>
+	<update id="UpdateMap" parameterType="com.bean.Map">
+		update Map set
+		MapExplain=#{MapExplain},
+		Address=#{Address}
+		where MapId=#{MapId}
+	</update>
+	<delete id="DeleteMap" parameterType="String">
+		DELETE from Map
+		WHERE MapId=#{mapId}
+	</delete>
+
+	<select id="SelectMap" 
+		resultType="com.bean.Map">
+		select * from Map 
+	</select>
+	
+	<select id="SelectMapById" parameterType="String"
+		resultType="com.bean.Map">
+		select * from Map where mapId = #{mapId}
+	</select>
+</mapper>

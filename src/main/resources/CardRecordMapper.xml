@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.CardDAO">
+	<insert id="InsertCardRecord" parameterType="com.bean.CardRecord">
+		insert into CardRecord
+		values
+		(#{RecordId},#{UserId},#{RecordTime},#{RecordIP},#{Status})
+	</insert>
+	
+	<select id="SelectCardRecordByUserId" parameterType="String"
+		resultType="com.bean.CardRecord">
+		select * from CardRecord where userId = #{userId}
+	</select>
+	
+	<select id="SelectRecordTimeByUserId" resultType="String">
+		select CARDRECORD.RECORDTIME from CARDRECORD where userId=#{0}
+	</select>
+	
+	
+	<select id="SelectAllCardRecord" resultType="com.bean.CardRecord">
+		select * from CardRecord 
+	</select>
+	
+	<select id="SelectCradCountByUserIdAndTime" resultType="int">
+		select count (*) from Cardrecord where  userId=#{0} and substr(CardRecord.Recordtime,1,10) =#{1}
+	</select>
+	
+	<select id="SelectUnusefulCardRecord" resultType="com.bean.CardRecord">
+		select t.*, t.rowid from CARDRECORD t where t.status='审核中'
+	</select>
+	
+	<update id="AdjustingCard">
+	update Cardrecord set Cardrecord.Status= #{1} WHERE CardRecord.Recordid=#{0}
+	</update>
+</mapper>

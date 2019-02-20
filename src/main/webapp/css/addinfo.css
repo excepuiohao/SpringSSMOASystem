@@ -1,0 +1,39 @@
+#content{
+	margin-top: 100px;
+	
+}
+#h1{
+	position: absolute;
+	top: 0px;
+	left: 700px;
+}
+
+#kind1{
+	position: relative;
+	left: -30px;
+	top: 0px;
+	width: 45px;
+	height: 35px;
+	border-radius: 7px;
+	
+}
+#kind3{
+	position: relative;
+	left: -30px;
+	top: 0px;
+	width: 45px;
+	height: 35px;
+	border-radius: 7px;
+	
+}
+#add1{
+	position: absolute;
+	top: 450px;
+	width: 410px;
+	left: 600px;
+}
+#foot1{
+	position: absolute;
+	top: 550px;
+	left: 790px;
+}

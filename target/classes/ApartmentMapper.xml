@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ApartmentDAO">
+	<insert id="InsertApartment" parameterType="com.bean.Apartment">
+		insert into Apartment
+		values
+		(#{ApartmentId},#{ApartmentName},#{ApartmentPMId},#{ApartmentExplain})
+	</insert>
+	<update id="UpdateApartment" parameterType="com.bean.Apartment">
+		update Apartment set
+		ApartmentName=#{ApartmentName},
+		ApartmentPMId=#{ApartmentPMId},
+		ApartmentExplain=#{ApartmentExplain}
+		Where ApartmentId=#{ApartmentId}
+	</update>
+	<delete id="DeleteApartment" parameterType="String">
+		DELETE from Apartment
+		WHERE
+		ApartmentId=#{ApartmentId}
+	</delete>
+
+	<select id="SelectApartmentById" parameterType="String"
+		resultType="com.bean.Apartment">
+		select * from Apartment where ApartmentId = #{ApartmentId}
+	</select>
+	<select id="SelectAllApartment" 
+		resultType="com.bean.Apartment">
+		select * from Apartment 
+	</select>
+
+</mapper>

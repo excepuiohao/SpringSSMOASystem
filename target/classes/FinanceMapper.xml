@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.FinanceDAO">
+	<insert id="InsertFinance" parameterType="com.bean.Finance">
+		insert into Finance
+		values
+		(#{ApartmentId},#{ApartmentMoney},#{FinanceMonth})
+	</insert>
+	<update id="UpdateFinance" parameterType="com.bean.Finance">
+		update Finance set
+		ApartmentId=#{ApartmentId},
+		ApartmentMoney=#{ApartmentMoney},
+		FinanceMonth=#{FinanceMonth}
+		where FinanceId=#{FinanceId}
+	</update>
+	<delete id="DeleteFinance" parameterType="String">
+		DELETE from Finance
+		WHERE FinanceId=#{FinanceId}
+	</delete>
+
+	<select id="SelectFinanceByApartmentId" parameterType="String"
+		resultType="com.bean.Finance">
+		select * from Finance where apartmentId = #{apartmentId}
+	</select>
+
+	<select id="SelectFinanceByMonth" parameterType="String"
+		resultType="com.bean.Finance">
+		select * from Finance where month = #{month}
+	</select>
+</mapper>

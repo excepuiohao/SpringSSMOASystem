@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.AdjustDAO">
+	<insert id="InsertAdjust" parameterType="com.bean.AdjustSalary">
+		insert into AdjustSalary
+		values
+		(#{UserID},#{HopeSalary},#{Status},#{AdjustTime})
+	</insert>
+	<update id="UpdateAdjust" parameterType="com.bean.AdjustSalary">
+		update AdjustSalary set
+		UserID=#{UserID},
+		HopeSalary=#{HopeSalary},
+		Status=#{Status},
+		AdjustTime=#{AdjustTime}
+		where AdjustSalaryId=#{AdjustSalaryId}
+	</update>
+	<delete id="DeleteAdjust" parameterType="String">
+		DELETE from AdjustSalary
+		WHERE AdjustSalaryId=#{AdjustSalaryId}
+	</delete>
+
+	<select id="SelectAdjustByStatus" parameterType="String"
+		resultType="com.bean.AdjustSalary">
+		select * from AdjustSalary where status = #{status}
+	</select>
+
+	<select id="SelectAdjustSalaryByUserID" parameterType="String"
+		resultType="com.bean.AdjustSalary">
+		select * from AdjustSalary where userId = #{userId}
+	</select>
+</mapper>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.CompensateDAO">
+	<insert id="InsertCompensate" parameterType="com.bean.Compensate">
+		insert into
+		Compensate
+		values
+		(#{CompensateID},#{CompensateType},#{CompensatePrice},#{UserID},#{CompensateStatus})
+	</insert>
+	<update id="UpdateCompensate" parameterType="com.bean.Compensate">
+	 Update Compensate
+		<trim prefix="set" suffixOverrides=",">
+			<if test="CompensateType!=null">CompensateType=#{CompensateType},</if>
+			<if test="CompensatePrice!=null">CompensatePrice=#{CompensatePrice},</if>
+			<if test="UserID!=null">UserID=#{UserID},</if>
+			<if test="CompensateStatus!=null">CompensateStatus=#{CompensateStatus}</if>
+		</trim>
+		where CompensateID=#{CompensateID}
+	</update>
+	<delete id="DeleteCompensate" parameterType="String">
+		DELETE from
+		Compensate
+		WHERE CompensateID=#{CompensateID}
+	</delete>
+
+	<select id="SelectCompensateByStatus" parameterType="String"
+		resultType="com.bean.Compensate">
+		select * from Compensate where CompensateStatus = #{CompensateStatus}
+	</select>
+
+	<select id="SelectCompensateByUserId" parameterType="String"
+		resultType="com.bean.Compensate">
+		select * from Compensate where UserID = #{UserID}
+	</select>
+
+	<select id="SelectCompensateByType" parameterType="String"
+		resultType="com.bean.Compensate">
+		select * from Compensate where CompensateType = #{CompensateType}
+	</select>
+	
+	<select id="SelectUsefulCompensateByUserId" parameterType="String"
+		resultType="com.bean.Compensate">
+		select * from Compensate where UserID = #{UserID} and COMPENSATESTATUS='审核成功'
+	</select>
+</mapper>

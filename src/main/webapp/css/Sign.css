@@ -1,0 +1,36 @@
+/* 签到块 */
+#div_sign{
+    position: absolute;
+    border-radius: 50%;
+    background-color: gray;
+    width: 150px;
+    height: 150px;
+}
+#div_sign:hover{
+    background-color: blue;
+    cursor: pointer;
+}
+/* 签到打卡字体块 */
+#font_sign{
+    position: absolute;
+    background: none;
+    border: none;
+    color: black;
+    top: 40px;
+    left: 45px;
+}
+#font_sign:hover{
+    color: #761c19;
+}
+
+/* 时间块 */
+#time_sign{
+    position: absolute;
+    top: 60px;
+    left: 38px;
+}
+
+#text_sign{
+    position: absolute;
+    left: 500px;
+}
